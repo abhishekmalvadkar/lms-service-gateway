@@ -2,12 +2,14 @@ package com.amalvadkar.lms.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
-public class LmsServiceGatewayApplication {
+@EnableConfigurationProperties(CorsProperties.class)
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LmsServiceGatewayApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: lms-service-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: lms-service-api-route
+          uri: ${LMS_SERVICE_API_URL:http://localhost:9092}
+          predicates:
+            - Path=/api/lms/**
+        - id: lms-service-auth-route
+          uri: ${LMS_SERVICE_AUTH_URL:http://localhost:9091}
+          predicates:
+            - Path=/api/auth/**
+
+server:
+  port: 9093
+
+lms:
+  cors:
+    allowedOrigins:
+      - https://dev-lms-amalvadkar.netlify.app
+      - https://dev2-lms.com
+      - https://qa-lms.com
+      - https://qa2-lms.com
+      - https://staging-lms.com
+      - https://sandbox-lms.com
+      - https://demo-lms.com
+      - https://training-lms.com
+      - https://lms.amalvadkar.com
+      - http://localhost:4200
+      - http://127.0.0.1:4200
+    allowedMethods:
+      - '*'
+    allowedHeaders:
+      - '*'
+    maxAge: 43200
+    exposedHeaders:
+      - '*'
