@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### LMS local log files don't track ###
+*.log
