@@ -31,7 +31,7 @@ class CorsIntegrationTest extends AbstractIT {
             .when()
             .get("/api/lms/test")
             .then()
-            .statusCode(500) // Expected connection refused since no real downstream service
+            .statusCode(401) // Expected 401 because it doesn't have auth header with token
             .header("Access-Control-Allow-Origin", "https://qa-lms.com");
     }
 
