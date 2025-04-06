@@ -8,15 +8,20 @@ spring:
           uri: ${LMS_SERVICE_API_URL:http://localhost:9092}
           predicates:
             - Path=/api/lms/**
+          filters:
+            - AuthenticationFilter
         - id: lms-service-auth-route
           uri: ${LMS_SERVICE_AUTH_URL:http://localhost:9091}
           predicates:
             - Path=/api/auth/**
+          filters:
+            - AuthenticationFilter
 
 server:
   port: 9093
 
 lms:
+  verifyTokenUrl: ${LMS_SERVICE_AUTH_URL:http://localhost:9091}/api/auth/verify-token
   cors:
     allowedOrigins:
       - https://dev-lms-amalvadkar.netlify.app
